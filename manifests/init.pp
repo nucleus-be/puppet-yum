@@ -104,12 +104,7 @@ class yum (
   Array[String] $repo_exclusions = [],
   Hash[String, Hash[String, String]] $gpgkeys = {},
   String $utils_package_name = 'yum-utils',
-  Optional[Boolean] $purge_repos = false
 ) {
-
-  resources { 'yumrepo':
-    purge => $purge_repos
-  }
 
   $module_metadata            = load_module_metadata($module_name)
   $supported_operatingsystems = $module_metadata['operatingsystem_support']
