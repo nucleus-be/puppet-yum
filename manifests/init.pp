@@ -126,6 +126,7 @@ class yum (
     $normalized_repos = yum::bool2num_hash_recursive($repos)
 
     $normalized_repos.each |$yumrepo, $attributes| {
+      file { "/etc/yum.repos.d/${yumrepo}": }
       @yumrepo { $yumrepo:
         * => $attributes
       }
